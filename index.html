@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<head>
+	<style type="text/css">
+		body
+		{
+			background-color: #191970;
+			color: white;
+			font-family: arial;
+		}
+		h1
+		{
+			color: yellow;
+			font-family: verdana;
+		}
+		p
+		{
+			color: yellow;
+			font-family: verdana;
+		}
+	</style>
+	<title>Activity 1</title>
+</head>
+<body>
+	<h1>Programming Activity No. 1</h1>
+	<div ng-app="ex-app" ng-controller = "activityController">
+		<table border="0">
+			<tr>
+				<td>Enter your first Name: </td>
+				<td><input type = "text" size="50" ng-model = "user.firstName"></td>
+			</tr>
+			<tr>
+				<td>Enter your last Name: </td>
+				<td><input type = "text" size="50" ng-model = "user.lastName"></td>
+			</tr>
+			<tr>
+				<td>Hello </td>
+				<td>{{ user.fullName() }}!</td>
+			</tr>
+			<tr>
+				<td>Enter you address: </td>
+				<td><input type = "text" size="50" ng-model = "user.address"></td>
+			</tr>
+			<tr>
+				<td>Your Address is </td>
+				<td>{{ user.address }}!</td>
+			</tr>
+			<tr>
+				<td>Enter your Senior High School: </td>
+				<td><input type = "text" size="50" ng-model = "user.shSchool"></td>
+			</tr>
+			<tr>
+				<td>Your Senior High School is </td>
+				<td> {{ user.shSchool }}!</td>
+			</tr>
+			<tr>
+				<td>Enter your School Course: </td>
+				<td><input type = "text" size="50" ng-model = "user.classCourse"></td>
+			</tr>
+			<tr>
+				<td>Your School Course is </td>
+				<td>{{ user.classCourse }}!</td>
+			</tr>
+		</table>
+		<p>Your list of programming languages: </p>
+			<ol>
+				<li ng-repeat = "language in user.languages">
+					{{ "Language: " + language.name + ", Intended Developer Type: " + language.uses + ", Difficulty: " + language.difficulty}}
+				</li>
+			</ol>
+	</div>
+
+	<script>
+		var actApp = angular.module("ex-app", []);
+
+		actApp.controller('activityController', function($scope){
+			$scope.user = {
+				firstName: "Liron Blaise",
+				lastName: "Ascan",
+				address: "L15 B15 Tennessee St. Southville",
+				shSchool: "Garden International School sdn bhd",
+				classCourse: "BS Information Technology",
+
+				languages: [
+				{name: 'Python', uses: 'Full-Stack', difficulty: 'Easy'},
+				{name: 'Perl', uses: 'Back-End', difficulty: 'Easy'},
+				{name: 'PHP', uses: 'Back-End', difficulty: 'Medium'},
+				{name: 'Javascript', uses: 'Front-End', difficulty: 'Medium'},
+				{name: 'Assembly', uses: 'Back-End', difficulty: 'Hard'},
+				{name: 'C++', uses: 'Back-End', difficulty: 'Medium'},
+				{name: 'CSS', uses: 'Front-End', difficulty: 'Easy'},
+				{name: 'Java', uses: 'Full-Stack', difficulty: 'Hard'},
+				{name: 'Typescript', uses: 'Front-End', difficulty: 'Hard'},
+				{name: 'HTML', uses: 'Full-Stack', difficulty: 'Medium'}
+				],
+
+				fullName: function() {
+					var userObject;
+					userObject = $scope.user;
+					return userObject.firstName + " " + userObject.lastName;
+				}
+
+
+			};
+		});
+	</script>
+</body>
+</html>
